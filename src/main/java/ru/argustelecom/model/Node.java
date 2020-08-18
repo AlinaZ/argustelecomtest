@@ -79,6 +79,14 @@ public class Node extends BaseEntity{
         this.house = house;
     }
 
+    public Set<Connector> getConnectors() {
+        return connectors;
+    }
+
+    public void setConnectors(Set<Connector> connectors) {
+        this.connectors = connectors;
+    }
+
     @Override
     public String toString() {
         return "Node{" +

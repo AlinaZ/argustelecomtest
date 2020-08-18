@@ -1,31 +1,16 @@
-package ru.argustelecom.model;
+package ru.argustelecom.view;
 
-/* point_id    INTEGER COMMENT 'Уникальный идентификатор точки в сети' PRIMARY KEY AUTO_INCREMENT,
-    version     INTEGER NOT NULL COMMENT 'Служебное поле hibernate',
-    point_cu_id INTEGER NOT NULL COMMENT 'Уникальный идентификатор точки в пределах коннектора',
-    cu_id       INTEGER NOT NULL COMMENT 'Уникальный идентификатор коннектора'*/
+import ru.argustelecom.model.Connector;
 
-import javax.persistence.*;
-import java.util.Set;
+public class PointView {
 
-@Entity
-@Table(name="Point")
-public class Point extends BaseEntity{
-
-    @Id
     private Integer point_id;
 
-    @Version
-    private Integer version;
-
-    @Column(name = "point_cu_id")
     private Integer point_cu_id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "cu_id")
     private Connector connector;
 
-    public Point() {
+    public PointView() {
     }
 
     public Integer getPoint_id() {

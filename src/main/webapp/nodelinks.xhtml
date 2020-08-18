@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title><h:outputText value="#{nodeController.node.name}"/></title>
+
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <link rel="stylesheet" href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"/>
+</h:head>
+
+<h:body styleClass="bg-dark text-white">
+    <h2 class="text-primary">
+        <h:outputText value="#{nodeController.node.name} - #{nodeController.node.region} - #{nodeController.node.street} - #{nodeController.node.house}"/>
+    </h2>
+
+    <div>
+        <b>Connectors: </b>
+        <h:outputText value="#{nodeController.node.connectorsCount}"/>
+    </div>
+
+    <div>
+        <b>Points: </b>
+        <h:outputText value="#{nodeController.node.pointsCount}"/>
+    </div>
+
+    <div>
+        <b>Points free: </b>
+        <h:outputText value="#{nodeController.node.pointsFree}"/>
+    </div>
+    <br/>
+
+    <h:dataTable border="1" value="#{nodeController.connectors}" var="connector" styleClass="table table-dark">
+        <h:column>
+            <f:facet name="header">Id</f:facet>
+            <h:outputText value="#{connector.id}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            <h:outputText value="#{connector.name}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Capacity</f:facet>
+            <h:outputText value="#{connector.capacity}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Link</f:facet>
+
+            <h:dataTable border="1" value="#{nodeController.getLinks(connector.id)}" var="link" styleClass="table table-dark">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{link.id}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Source Connector</f:facet>
+                    <h:outputText value="#{link.sourceConnectorId}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Source Point</f:facet>
+                    <h:outputText value="#{link.sourcePoint}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Target Connector</f:facet>
+                    <h:outputText value="#{link.targetConnectorId}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Target Point</f:facet>
+                    <h:outputText value="#{link.targetPoint}"/>
+                </h:column>
+            </h:dataTable>
+        </h:column>
+    </h:dataTable>
+    <br/>
+
+    <h:column>
+        <h:form>
+            <h:commandButton value="Back to all nodes" action="nodesList" styleClass="btn btn-primary"/>
+        </h:form>
+    </h:column>
+</h:body>
+</html>

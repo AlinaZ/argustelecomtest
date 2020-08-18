@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Nodes</title>
+
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+
+    <link rel="stylesheet" href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"/>
+</h:head>
+
+<h:body  styleClass="bg-dark">
+    <h2 class="text-primary">Nodes</h2>
+
+    <h:dataTable border="1" value="#{nodesListController.all}" var="node" styleClass="table table-dark">
+        <h:column>
+            <f:facet name="header">Id</f:facet>
+            <h:outputText value="#{node.id}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            <h:outputText value="#{node.name}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Region</f:facet>
+            <h:outputText value="#{node.region}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Street</f:facet>
+            <h:outputText value="#{node.street}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">House</f:facet>
+            <h:outputText value="#{node.house}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Connectors</f:facet>
+            <h:outputText value="#{node.connectorsCount}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Points</f:facet>
+            <h:outputText value="#{node.pointsCount}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Points free</f:facet>
+            <h:outputText value="#{node.pointsFree}"/>
+        </h:column>
+
+        <h:column>
+            <h:form>
+                <h:commandButton value="Show" styleClass="btn btn-primary" action="#{nodeController.createNodePage(node)}"/>
+            </h:form>
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>

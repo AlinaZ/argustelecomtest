@@ -6,6 +6,7 @@ package ru.argustelecom.model;
     node_id  INTEGER NOT NULL COMMENT 'Уникальный идентификатор узла, в котором находится коннектор'*/
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="Connector")
@@ -26,6 +27,9 @@ public class Connector extends BaseEntity{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "node_id")
     private Node node;
+
+    @OneToMany(mappedBy = "connector",cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Point> points;
 
     public Connector() {
     }
@@ -60,6 +64,14 @@ public class Connector extends BaseEntity{
 
     public void setNode(Node node) {
         this.node = node;
+    }
+
+    public Set<Point> getPoints() {
+        return points;
+    }
+
+    public void setPoints(Set<Point> points) {
+        this.points = points;
     }
 
     @Override
