@@ -16,10 +16,10 @@
 <h:body  styleClass="bg-dark">
     <h2 class="text-primary">Nodes</h2>
 
-    <h:dataTable border="1" value="#{nodesListController.all}" var="node" styleClass="table table-dark">
+    <h:dataTable border="1" value="#{nodesController.getAll}" var="node" styleClass="table table-dark">
         <h:column>
             <f:facet name="header">Id</f:facet>
-            <h:outputText value="#{node.id}"/>
+            <h:outputText value="#{node.node_id}"/>
         </h:column>
 
         <h:column>
@@ -44,22 +44,22 @@
 
         <h:column>
             <f:facet name="header">Connectors</f:facet>
-            <h:outputText value="#{node.connectorsCount}"/>
+            <h:outputText value="#{node.connectorsNumber}"/>
         </h:column>
 
         <h:column>
             <f:facet name="header">Points</f:facet>
-            <h:outputText value="#{node.pointsCount}"/>
+            <h:outputText value="#{node.pointsNumber}"/>
         </h:column>
 
         <h:column>
             <f:facet name="header">Points free</f:facet>
-            <h:outputText value="#{node.pointsFree}"/>
+            <h:outputText value="#{node.freePointsNumber}"/>
         </h:column>
 
         <h:column>
             <h:form>
-                <h:commandButton value="Show" styleClass="btn btn-primary" action="#{nodeController.createNodePage(node)}"/>
+                <h:commandButton value="Show" styleClass="btn btn-primary" action="#{nodeLinksController.getNodeLinks(node.node_id)}"/>
             </h:form>
         </h:column>
     </h:dataTable>

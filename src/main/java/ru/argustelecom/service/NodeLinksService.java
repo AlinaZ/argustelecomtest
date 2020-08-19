@@ -8,9 +8,11 @@ import ru.argustelecom.view.LinkView;
 import ru.argustelecom.view.NodeLinksView;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateful;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateful
 public class NodeLinksService {
     @EJB
     private NodeDao nodeDao;
@@ -38,7 +40,6 @@ public class NodeLinksService {
                 nodeLinks.add(linkView);
             }
         }
-
         nodeLinksView.setNode_id(id);
         nodeLinksView.setNodeLinks(nodeLinks);
 
