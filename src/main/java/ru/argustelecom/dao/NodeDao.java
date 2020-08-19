@@ -2,11 +2,13 @@ package ru.argustelecom.dao;
 
 import ru.argustelecom.model.Node;
 
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Stateful
 public class NodeDao {
 
     @PersistenceContext

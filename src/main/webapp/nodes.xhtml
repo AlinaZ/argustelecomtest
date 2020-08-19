@@ -16,7 +16,7 @@
 <h:body  styleClass="bg-dark">
     <h2 class="text-primary">Nodes</h2>
 
-    <h:dataTable border="1" value="#{nodesController.getAll}" var="node" styleClass="table table-dark">
+    <h:dataTable border="1" value="#{nodesController.nodes}" var="node" styleClass="table table-dark">
         <h:column>
             <f:facet name="header">Id</f:facet>
             <h:outputText value="#{node.node_id}"/>

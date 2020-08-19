@@ -15,7 +15,7 @@ public class NodesController {
     @EJB
     private NodesService service;
 
-    public List<NodeView> getAll() {
+    public List<NodeView> getNodes() {
         return service.getNodes();
     }
 }
