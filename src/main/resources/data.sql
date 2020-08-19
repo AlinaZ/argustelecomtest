@@ -19,7 +19,7 @@ INSERT INTO Point (point_id,version,point_cu_id,cu_id) VALUES (8,0,1,4);
 INSERT INTO Point (point_id,version,point_cu_id,cu_id) VALUES (9,0,1,5);
 
 INSERT INTO Link (link_id,version,point1_id,point2_id) VALUES (1,0,1,7);
-INSERT INTO Link (link_id,version,point1_id,point2_id) VALUES (1,0,2,7);
-INSERT INTO Link (link_id,version,point1_id,point2_id) VALUES (1,0,8,9);
-INSERT INTO Link (link_id,version,point1_id,point2_id) VALUES (1,0,8,5);
-INSERT INTO Link (link_id,version,point1_id,point2_id) VALUES (1,0,3,7);
+INSERT INTO Link (link_id,version,point1_id,point2_id) VALUES (2,0,2,7);
+INSERT INTO Link (link_id,version,point1_id,point2_id) VALUES (3,0,8,9);
+INSERT INTO Link (link_id,version,point1_id,point2_id) VALUES (4,0,8,5);
+INSERT INTO Link (link_id,version,point1_id,point2_id) VALUES (5,0,3,7);
