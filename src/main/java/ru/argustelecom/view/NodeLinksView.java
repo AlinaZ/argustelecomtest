@@ -4,15 +4,15 @@ import java.util.List;
 
 public class NodeLinksView {
 
-    private Long node_id;
+    private Integer node_id;
 
     List<LinkView> nodeLinks;
 
-    public Long getNode_id() {
+    public Integer getNode_id() {
         return node_id;
     }
 
-    public void setNode_id(Long node_id) {
+    public void setNode_id(Integer node_id) {
         this.node_id = node_id;
     }
 

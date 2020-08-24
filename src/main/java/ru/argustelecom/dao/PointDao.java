@@ -16,19 +16,14 @@ public class PointDao {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Point> loadAll() {
-        TypedQuery<Point> query = em.createQuery("SELECT p FROM Point p", Point.class);
-        return query.getResultList();
-    }
-
     public boolean isPointFree(Point point) {
         Query query = em.createQuery("select count(*) from Link l where l.point1.point_id=" + point.getPoint_id() +
                 " or l.point2.point_id=" + point.getPoint_id());
-        Integer linkedPoint = (Integer) query.getSingleResult();
+        Long linkedPoint = (Long) query.getSingleResult();
         if (linkedPoint > 0) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 

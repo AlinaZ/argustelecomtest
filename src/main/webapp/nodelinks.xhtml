@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <title><h:outputText value="#{nodeController.node.name}"/></title>
+    <title><h:outputText value="1"/></title>
 
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
     <link rel="stylesheet" href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"/>
@@ -14,68 +14,43 @@
 
 <h:body styleClass="bg-dark text-white">
     <h2 class="text-primary">
-        <h:outputText value="#{nodeController.node.name} - #{nodeController.node.region} - #{nodeController.node.street} - #{nodeController.node.house}"/>
+        <h:outputText value="Node Links"/>
     </h2>
 
-    <div>
-        <b>Connectors: </b>
-        <h:outputText value="#{nodeController.node.connectorsCount}"/>
-    </div>
+    <h:dataTable border="1" value="#{nodeLinksController.nodeLinks}" var="nodelinks" styleClass="table table-dark">
 
-    <div>
-        <b>Points: </b>
-        <h:outputText value="#{nodeController.node.pointsCount}"/>
-    </div>
-
-    <div>
-        <b>Points free: </b>
-        <h:outputText value="#{nodeController.node.pointsFree}"/>
-    </div>
-    <br/>
-
-    <h:dataTable border="1" value="#{nodeController.connectors}" var="connector" styleClass="table table-dark">
-        <h:column>
-            <f:facet name="header">Id</f:facet>
-            <h:outputText value="#{connector.id}"/>
-        </h:column>
-
-        <h:column>
-            <f:facet name="header">Name</f:facet>
-            <h:outputText value="#{connector.name}"/>
-        </h:column>
-
-        <h:column>
-            <f:facet name="header">Capacity</f:facet>
-            <h:outputText value="#{connector.capacity}"/>
-        </h:column>
+    <h:column>
+        <f:facet name="header">Node Id</f:facet>
+        <h:outputText value="#{nodelinks.node_id}"/>
+    </h:column>
 
         <h:column>
             <f:facet name="header">Link</f:facet>
 
-            <h:dataTable border="1" value="#{nodeController.getLinks(connector.id)}" var="link" styleClass="table table-dark">
+            <h:dataTable border="1" value="#{nodeLinksController.nodeLinks.nodeLinks}" var="links" styleClass="table table-dark">
                 <h:column>
-                    <f:facet name="header">Id</f:facet>
-                    <h:outputText value="#{link.id}"/>
+                    <f:facet name="header">Link Id</f:facet>
+                    <h:outputText value="#{links.link_id}"/>
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">Source Connector</f:facet>
-                    <h:outputText value="#{link.sourceConnectorId}"/>
+                    <h:outputText value="#{links.connector1_id}"/>
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Source Point</f:facet>
-                    <h:outputText value="#{link.sourcePoint}"/>
+                    <f:facet name="header">Source Point Number in Connector</f:facet>
+                    <h:outputText value="#{links.point1_cu_id}"/>
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">Target Connector</f:facet>
-                    <h:outputText value="#{link.targetConnectorId}"/>
+                    <h:outputText value="#{links.connector2_id}"/>
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Target Point</f:facet>
-                    <h:outputText value="#{link.targetPoint}"/>
+                    <f:facet name="header">Target Point Number in Connector</f:facet>
+                    <h:outputText value="#{links.point2_cu_id}"/>
                 </h:column>
             </h:dataTable>
         </h:column>
@@ -84,7 +59,7 @@
 
     <h:column>
         <h:form>
-            <h:commandButton value="Back to all nodes" action="nodesList" styleClass="btn btn-primary"/>
+            <h:commandButton value="Back to all nodes" action="nodes" styleClass="btn btn-primary"/>
         </h:form>
     </h:column>
 </h:body>

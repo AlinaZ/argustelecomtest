@@ -1,10 +1,6 @@
 package ru.argustelecom.view;
 
-import ru.argustelecom.model.Connector;
-import java.util.Set;
-
 public class NodeView {
-
 
     private Integer node_id;
 
@@ -72,7 +68,6 @@ public class NodeView {
     public void setHouse(String house) {
         this.house = house;
     }
-
 
     public int getConnectorsNumber() {
         return connectorsNumber;

@@ -1,8 +1,5 @@
 package ru.argustelecom.view;
 
-import ru.argustelecom.model.Point;
-
-
 public class LinkView {
 
     private Integer link_id;

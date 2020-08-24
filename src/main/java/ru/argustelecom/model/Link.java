@@ -10,18 +10,18 @@ import javax.persistence.*;
 public class Link extends BaseEntity{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "link_id")
     private Integer link_id;
 
     @Version
     private Integer version;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
     @JoinColumn(name = "point1_id")
     private Point point1;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
     @JoinColumn(name = "point2_id")
     private Point point2;
 

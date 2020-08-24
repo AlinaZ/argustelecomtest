@@ -15,10 +15,33 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class NodeLinksController {
 
+    public Integer getNode_Id() {
+        return node_Id;
+    }
+
+    public void setNode_Id(Integer node_Id) {
+        this.node_Id = node_Id;
+    }
+
+    private Integer node_Id;
+
     @EJB
     private NodeLinksService service;
 
-    public NodeLinksView getNodeLinks(Long id) {
-        return service.getNodeLinks(id);
+    public String createNodeLinksPage(Integer node_Id) {
+        this.node_Id = node_Id;
+        return "nodelinks.xhtml?faces-redirect=true";
+    }
+
+    /*public NodeLinksView getNodeLinky() {
+        NodeLinksView nlkvw = new NodeLinksView();
+        nlkvw.setNode_id(1);
+        return nlkvw;
+    }*/
+
+
+    public NodeLinksView getNodeLinks() {
+        System.out.println("controller nodelinks has been called");
+        return service.getNodeLinks(node_Id);
     }
 }
