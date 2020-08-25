@@ -15,6 +15,13 @@ public class Point extends BaseEntity{
     @Id
     private Integer point_id;
 
+    public Point(Integer point_id, Integer version, Integer point_cu_id, Connector connector) {
+        this.point_id = point_id;
+        this.version = version;
+        this.point_cu_id = point_cu_id;
+        this.connector = connector;
+    }
+
     @Version
     private Integer version;
 

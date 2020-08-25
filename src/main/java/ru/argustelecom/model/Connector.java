@@ -70,6 +70,15 @@ public class Connector extends BaseEntity{
         return points;
     }
 
+    public Connector(Integer cu_id, Integer version, String name, Integer capacity, Node node, Set<Point> points) {
+        this.cu_id = cu_id;
+        this.version = version;
+        this.name = name;
+        this.capacity = capacity;
+        this.node = node;
+        this.points = points;
+    }
+
     public void setPoints(Set<Point> points) {
         this.points = points;
     }

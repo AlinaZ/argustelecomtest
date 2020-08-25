@@ -11,9 +11,8 @@ import javax.ejb.EJB;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
 
-@Stateless
+@Stateful
 public class NodesService {
 
     @EJB

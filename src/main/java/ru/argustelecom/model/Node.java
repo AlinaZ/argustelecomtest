@@ -28,6 +28,16 @@ public class Node extends BaseEntity{
     @OneToMany(mappedBy = "node",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Connector> connectors;
 
+    public Node(Integer node_id, Integer version, String name, String region, String street, String house, Set<Connector> connectors) {
+        this.node_id = node_id;
+        this.version = version;
+        this.name = name;
+        this.region = region;
+        this.street = street;
+        this.house = house;
+        this.connectors = connectors;
+    }
+
     public Node() {
     }
 
