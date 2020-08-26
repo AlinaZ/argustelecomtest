@@ -6,6 +6,14 @@ public class LinkView {
 
     private Integer connector1_id;
 
+    public LinkView(Integer link_id, Integer connector1_id, Integer connector2_id, Integer point1_cu_id, Integer point2_cu_id) {
+        this.link_id = link_id;
+        this.connector1_id = connector1_id;
+        this.connector2_id = connector2_id;
+        this.point1_cu_id = point1_cu_id;
+        this.point2_cu_id = point2_cu_id;
+    }
+
     private Integer connector2_id;
 
     public Integer getLink_id() {

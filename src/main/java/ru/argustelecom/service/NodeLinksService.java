@@ -17,7 +17,6 @@ public class NodeLinksService {
     private LinkDao linkDao;
 
     public NodeLinksView getNodeLinks(Integer id) {
-        System.out.println("Service NodeLinks called");
         NodeLinksView nodeLinksView = new NodeLinksView();
         List<Link> links = linkDao.all();
 
@@ -25,6 +24,14 @@ public class NodeLinksService {
 
         for (Link link : links) {
             LinkView linkView = new LinkView();
+            System.out.println("*************");
+            System.out.println(link.getPoint1().toString());
+            System.out.println(link.getPoint1().getConnector().toString());
+            System.out.println(link.getPoint1().getConnector().getNode().toString());
+            System.out.println(link.getPoint2().toString());
+            System.out.println(link.getPoint2().getConnector().toString());
+            System.out.println(link.getPoint2().getConnector().getNode().toString());
+
             if (link.getPoint1().getConnector().getNode().getNode_id().equals(id) ||
                     link.getPoint2().getConnector().getNode().getNode_id().equals(id)) {
                 linkView.setLink_id(link.getLink_id());

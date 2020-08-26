@@ -25,6 +25,13 @@ public class Link extends BaseEntity{
     @JoinColumn(name = "point2_id")
     private Point point2;
 
+    public Link(Integer link_id, Integer version, Point point1, Point point2) {
+        this.link_id = link_id;
+        this.version = version;
+        this.point1 = point1;
+        this.point2 = point2;
+    }
+
     public Link() {
     }
 

@@ -33,15 +33,7 @@ public class NodeLinksController {
         return "nodelinks.xhtml?faces-redirect=true";
     }
 
-    /*public NodeLinksView getNodeLinky() {
-        NodeLinksView nlkvw = new NodeLinksView();
-        nlkvw.setNode_id(1);
-        return nlkvw;
-    }*/
-
-
-    public NodeLinksView getNodeLinks() {
-        System.out.println("controller nodelinks has been called");
+      public NodeLinksView getNodeLinks() {
         return service.getNodeLinks(node_Id);
     }
 }
