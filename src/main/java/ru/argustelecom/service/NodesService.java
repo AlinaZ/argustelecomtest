@@ -21,6 +21,10 @@ public class NodesService {
     @EJB
     private PointDao pointDao;
 
+    /**
+     * Метод выводит информацию об узле и количестве свободных точек в нем
+     * @return
+     */
     public List<NodeView> getNodes() {
         List<NodeView> nodesInfo = new ArrayList<NodeView>();
         List<Node> nodes = nodeDao.all();

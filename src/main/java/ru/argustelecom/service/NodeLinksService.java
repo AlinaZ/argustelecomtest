@@ -16,24 +16,18 @@ public class NodeLinksService {
     @EJB
     private LinkDao linkDao;
 
+    /**
+     * Метод находит все входящие и исходящие связи узла и конвертирует их в представление
+     * @param id - номер узла
+     * @return
+     */
     public NodeLinksView getNodeLinks(Integer id) {
         NodeLinksView nodeLinksView = new NodeLinksView();
         List<Link> links = linkDao.all();
-
         List<LinkView> nodeLinks = new ArrayList<>();
-
         for (Link link : links) {
             LinkView linkView = new LinkView();
-            System.out.println("*************");
-            System.out.println(link.getPoint1().toString());
-            System.out.println(link.getPoint1().getConnector().toString());
-            System.out.println(link.getPoint1().getConnector().getNode().toString());
-            System.out.println(link.getPoint2().toString());
-            System.out.println(link.getPoint2().getConnector().toString());
-            System.out.println(link.getPoint2().getConnector().getNode().toString());
-
-            if (link.getPoint1().getConnector().getNode().getNode_id().equals(id) ||
-                    link.getPoint2().getConnector().getNode().getNode_id().equals(id)) {
+            if (link.getPoint1().getConnector().getNode().getNode_id().equals(id) || link.getPoint2().getConnector().getNode().getNode_id().equals(id)) {
                 linkView.setLink_id(link.getLink_id());
                 linkView.setConnector1_id(link.getPoint1().getConnector().getCu_id());
                 linkView.setPoint1_cu_id(link.getPoint1().getPoint_cu_id());
@@ -44,7 +38,6 @@ public class NodeLinksService {
         }
         nodeLinksView.setNode_id(id);
         nodeLinksView.setNodeLinks(nodeLinks);
-
         return nodeLinksView;
     }
 

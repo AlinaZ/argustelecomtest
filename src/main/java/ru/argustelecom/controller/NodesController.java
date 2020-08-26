@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class NodesController {
+
     @EJB
     private NodesService service;
 

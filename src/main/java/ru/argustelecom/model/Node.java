@@ -7,24 +7,46 @@ import java.util.Set;
 @Table(name="Node")
 public class Node extends BaseEntity{
 
+    /**
+     * Уникальный идентификатор узла
+     */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer node_id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Имя узла
+     */
     @Column(name = "name", length = 25)
     private String name;
 
+    /**
+     * Регион
+     */
     @Column(name = "region", length = 25)
     private String region;
 
+    /**
+     * Улица
+     */
     @Column(name = "street", length = 25)
     private String street;
 
+    /**
+     * Дом
+     */
     @Column(name = "house", length = 25)
     private String house;
 
+    /**
+     * Коннекторы узла
+     */
     @OneToMany(mappedBy = "node",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Connector> connectors;
 
@@ -105,6 +127,7 @@ public class Node extends BaseEntity{
                 ", region='" + region + '\'' +
                 ", street='" + street + '\'' +
                 ", house='" + house + '\'' +
+                ", connectors=" + connectors.toString() +
                 '}';
     }
 }

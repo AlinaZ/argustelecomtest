@@ -19,6 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 public class NodeServiceTest {
+
     @Mock
     private NodeDao nodeDaoMock;
 
@@ -35,7 +36,9 @@ public class NodeServiceTest {
 
     @Test
     public void testGetNodes() {
+        //Создание тестовых данных - 1 узел, 1 коннектор, 1 точка
         List<Node> nodes = new ArrayList<>();
+
         Node node1 = new Node();
         node1.setNode_id(1);
         node1.setVersion(0);
@@ -43,19 +46,20 @@ public class NodeServiceTest {
         node1.setRegion("Russia");
         node1.setStreet("Lenina");
         node1.setHouse("18");
+
         Point point1 = new Point();
         point1.setPoint_id(1);
         point1.setPoint_cu_id(1);
         Set<Point> points = new HashSet<>();
         points.add(point1);
+
         Connector cn1 = new Connector(1, 0, "connector1", 1, node1, points);
         Set<Connector> connectors = new HashSet<>();
+        point1.setConnector(cn1);
         connectors.add(cn1);
         node1.setConnectors(connectors);
         nodes.add(node1);
 
-        when(nodeDaoMock.all()).thenReturn(nodes);
-        when(pointDaoMock.isPointFree(point1)).thenReturn(true);
         List<NodeView> nodesInfo = new ArrayList<NodeView>();
         NodeView nodeView1 = new NodeView();
         nodeView1.setNode_id(1);
@@ -67,6 +71,12 @@ public class NodeServiceTest {
         nodeView1.setPointsNumber(1);
         nodeView1.setFreePointsNumber(1);
         nodesInfo.add(nodeView1);
+
+        when(nodeDaoMock.all()).thenReturn(nodes);
+        //Тестовая точка свободна, поскольку тестовых связей нет
+        when(pointDaoMock.isPointFree(point1)).thenReturn(true);
+
+        //Сравнение результата вызова метода сервиса с тестовыми данными
         List<NodeView> resultNodesInfo = service.getNodes();
         for (NodeView resultNodeInfo:resultNodesInfo) {
             assertEquals(resultNodeInfo.getNode_id(),node1.getNode_id());

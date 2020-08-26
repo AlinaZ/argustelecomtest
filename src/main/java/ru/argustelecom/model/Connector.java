@@ -1,9 +1,4 @@
 package ru.argustelecom.model;
-/*cu_id    INTEGER COMMENT 'Уникальный идентификатор коннектора' PRIMARY KEY AUTO_INCREMENT,
-    version  INTEGER NOT NULL COMMENT 'Служебное поле hibernate',
-    name     VARCHAR NOT NULL COMMENT 'Имя коннектора',
-    capacity INTEGER NOT NULL COMMENT 'Емкость коннектора',
-    node_id  INTEGER NOT NULL COMMENT 'Уникальный идентификатор узла, в котором находится коннектор'*/
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,26 +7,54 @@ import java.util.Set;
 @Table(name="Connector")
 public class Connector extends BaseEntity{
 
+    /**
+     * Уникальный идентификатор коннектора
+     */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cu_id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Имя коннектора
+     */
     @Column(name = "name", length = 25)
     private String name;
 
+    /**
+     * Емкость коннектора
+     */
     @Column(name = "capacity")
     private Integer capacity;
 
+    /**
+     * Узел, в котором находится коннектор
+     */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "node_id")
     private Node node;
 
+    /**
+     * Точки, которые входят в коннектор
+     */
     @OneToMany(mappedBy = "connector",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Point> points;
 
     public Connector() {
+    }
+
+    public Connector(Integer cu_id, Integer version, String name, Integer capacity, Node node, Set<Point> points) {
+        this.cu_id = cu_id;
+        this.version = version;
+        this.name = name;
+        this.capacity = capacity;
+        this.node = node;
+        this.points = points;
     }
 
     public Integer getCu_id() {
@@ -70,15 +93,6 @@ public class Connector extends BaseEntity{
         return points;
     }
 
-    public Connector(Integer cu_id, Integer version, String name, Integer capacity, Node node, Set<Point> points) {
-        this.cu_id = cu_id;
-        this.version = version;
-        this.name = name;
-        this.capacity = capacity;
-        this.node = node;
-        this.points = points;
-    }
-
     public void setPoints(Set<Point> points) {
         this.points = points;
     }
@@ -89,7 +103,8 @@ public class Connector extends BaseEntity{
                 "cu_id=" + cu_id +
                 ", name='" + name + '\'' +
                 ", capacity=" + capacity +
-                ", node=" + node +
+                ", node=" + node.toString() +
+                ", points=" + points.toString() +
                 '}';
     }
 }

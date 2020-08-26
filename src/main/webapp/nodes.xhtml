@@ -7,9 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Nodes</title>
-
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
-
     <link rel="stylesheet" href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"/>
 </h:head>
 
@@ -59,7 +57,7 @@
 
         <h:column>
             <h:form>
-                <h:commandButton value="Show" styleClass="btn btn-primary" action="#{nodeLinksController.createNodeLinksPage(node.node_id)}"/>
+                <h:commandButton value="Show node links" styleClass="btn btn-primary" action="#{nodeLinksController.createNodeLinksPage(node.node_id)}"/>
             </h:form>
         </h:column>
     </h:dataTable>

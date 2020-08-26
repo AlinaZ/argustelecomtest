@@ -1,26 +1,35 @@
 package ru.argustelecom.model;
-/* link_id   INTEGER COMMENT 'Уникальный идентификатор связи в сети' PRIMARY KEY AUTO_INCREMENT,
-    version   INTEGER NOT NULL COMMENT 'Служебное поле hibernate',
-    point1_id INTEGER NOT NULL COMMENT 'Уникальный идентификатор первой точки',
-    point2_id INTEGER NOT NULL COMMENT 'Уникальный идентификатор второй точки'*/
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="Link")
 public class Link extends BaseEntity{
 
+    /**
+     * Уникальный идентификатор связи в сети
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "link_id")
     private Integer link_id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Начальная точка
+     */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "point1_id")
     private Point point1;
 
+    /**
+     * Конечная точка
+     */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "point2_id")
     private Point point2;
@@ -63,8 +72,8 @@ public class Link extends BaseEntity{
     public String toString() {
         return "Link{" +
                 "link_id=" + link_id +
-                ", point1=" + point1 +
-                ", point2=" + point2 +
+                ", point1=" + point1.toString() +
+                ", point2=" + point2.toString() +
                 '}';
     }
 }

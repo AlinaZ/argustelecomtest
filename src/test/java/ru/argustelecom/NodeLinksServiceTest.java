@@ -41,8 +41,8 @@ public class NodeLinksServiceTest {
 
     @Test
     public void testGetNodeLinks() {
-        List<Link> links = new ArrayList<>();
 
+        //Создание тестовых данных, 2 узла, 2 коннектора, 2 точки, 1 связь
         Node node1 = new Node();
         node1.setNode_id(1);
         node1.setVersion(0);
@@ -84,11 +84,11 @@ public class NodeLinksServiceTest {
         node2.setConnectors(connectors2);
 
         Link link1 = new Link(1, 0, point1, point2);
+        List<Link> links = new ArrayList<>();
         links.add(link1);
 
         when(linkDaoMock.all()).thenReturn(links);
         List<LinkView> nodeLinks1 = new ArrayList<>();
-        List<LinkView> nodeLinks2 = new ArrayList<>();
         LinkView linkView1 = new LinkView(1, 1, 2, 1, 1);
         nodeLinks1.add(linkView1);
 
@@ -100,6 +100,7 @@ public class NodeLinksServiceTest {
         nodeLinksView2.setNode_id(2);
         nodeLinksView2.setNodeLinks(nodeLinks1);
 
+        //Сравнение результата вызова метода сервиса для узлов 1 и 2 с тестовыми данными
         NodeLinksView result1 = service.getNodeLinks(1);
         assertEquals(result1.getNode_id(), nodeLinksView1.getNode_id());
         for (LinkView resultLinksInfo : result1.getNodeLinks()) {

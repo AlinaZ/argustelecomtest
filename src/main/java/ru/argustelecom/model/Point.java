@@ -1,19 +1,37 @@
 package ru.argustelecom.model;
 
-/* point_id    INTEGER COMMENT 'Уникальный идентификатор точки в сети' PRIMARY KEY AUTO_INCREMENT,
-    version     INTEGER NOT NULL COMMENT 'Служебное поле hibernate',
-    point_cu_id INTEGER NOT NULL COMMENT 'Уникальный идентификатор точки в пределах коннектора',
-    cu_id       INTEGER NOT NULL COMMENT 'Уникальный идентификатор коннектора'*/
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name="Point")
 public class Point extends BaseEntity{
 
+    /**
+     * Уникальный идентификатор точки в сети
+     */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer point_id;
+
+    /**
+     * Служебное поле hibernate
+     */
+    @Version
+    private Integer version;
+
+    /**
+     * Уникальный идентификатор точки в пределах коннектора
+     */
+    @Column(name = "point_cu_id")
+    private Integer point_cu_id;
+
+    /**
+     * Коннектор, в котором находится точка
+     */
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cu_id")
+    private Connector connector;
 
     public Point(Integer point_id, Integer version, Integer point_cu_id, Connector connector) {
         this.point_id = point_id;
@@ -21,16 +39,6 @@ public class Point extends BaseEntity{
         this.point_cu_id = point_cu_id;
         this.connector = connector;
     }
-
-    @Version
-    private Integer version;
-
-    @Column(name = "point_cu_id")
-    private Integer point_cu_id;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "cu_id")
-    private Connector connector;
 
     public Point() {
     }
@@ -64,7 +72,7 @@ public class Point extends BaseEntity{
         return "Point{" +
                 "point_id=" + point_id +
                 ", point_cu_id=" + point_cu_id +
-                ", connector=" + connector +
+                ", connector=" + connector.toString() +
                 '}';
     }
 }

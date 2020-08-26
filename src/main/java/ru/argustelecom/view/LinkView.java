@@ -6,6 +6,12 @@ public class LinkView {
 
     private Integer connector1_id;
 
+    private Integer connector2_id;
+
+    private Integer point1_cu_id;
+
+    private Integer point2_cu_id;
+
     public LinkView(Integer link_id, Integer connector1_id, Integer connector2_id, Integer point1_cu_id, Integer point2_cu_id) {
         this.link_id = link_id;
         this.connector1_id = connector1_id;
@@ -14,7 +20,8 @@ public class LinkView {
         this.point2_cu_id = point2_cu_id;
     }
 
-    private Integer connector2_id;
+    public LinkView() {
+    }
 
     public Integer getLink_id() {
         return link_id;
@@ -55,13 +62,5 @@ public class LinkView {
     public void setPoint2_cu_id(Integer point2_cu_id) {
         this.point2_cu_id = point2_cu_id;
     }
-
-    private Integer point1_cu_id;
-
-    private Integer point2_cu_id;
-
-    public LinkView() {
-    }
-
 
 }

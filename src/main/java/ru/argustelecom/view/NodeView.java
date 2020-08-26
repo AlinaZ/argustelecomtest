@@ -16,17 +16,17 @@ public class NodeView {
 
     private int pointsNumber;
 
+    private int freePointsNumber;
+
+    public NodeView() {
+    }
+
     public int getFreePointsNumber() {
         return freePointsNumber;
     }
 
     public void setFreePointsNumber(int freePointsNumber) {
         this.freePointsNumber = freePointsNumber;
-    }
-
-    private int freePointsNumber;
-
-    public NodeView() {
     }
 
     public Integer getNode_id() {
